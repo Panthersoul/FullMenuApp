@@ -6,7 +6,6 @@
 }
 
 .mainContainer {
-    
     margin: 0px !important;
     padding: 0px !important;
     max-width: none !important;
@@ -41,3 +40,47 @@
     background-color: #4CAF50 !important; /* Green */
     color: white;
 }
+
+/*PORTADA Index.html*/
+.portada {
+    height: 70vh;
+    display: block;
+}
+
+.fondoAmarillo {
+    background-color: #eee460;
+}
+
+.imagenPortada {
+    width: 50%;
+    /* Agrego una animacion personalizada usando KeyFrame*/
+    animation-name: saltar;
+    animation-duration: 1s;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+}
+
+
+
+@keyframes saltar {
+    0% {
+        opacity: 0;
+        transform: scale(0.3) translate3d(0,0,0);
+    }
+
+    50% {
+        opacity: 0.9;
+        transform: scale(1.1);
+    }
+
+    80% {
+        opacity: 1;
+        transform: scale(0.89);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1) translate3d(0,0,0);
+    }
+}
+  
