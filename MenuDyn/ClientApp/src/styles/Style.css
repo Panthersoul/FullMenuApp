@@ -1,6 +1,26 @@
 ﻿body {
 }
 
+.navbar {
+    margin-bottom: none !important;
+}
+
+.mainContainer {
+    
+    margin: 0px !important;
+    padding: 0px !important;
+    max-width: none !important;
+}
+
+
+
+.home {
+    display: flex;
+    flex-direction: column;
+}
+
+
+
 .button {
     background-color: #202a9a !important; /* Blue */
     border: none;
