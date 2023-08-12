@@ -16,7 +16,7 @@ export class Home extends Component {
                       <div className="">
                           
                               <div className="row justify-content-evenly align-items-center">
-                                  <div className="col-sx-6 col-md-8 col-lg-6 mt-5 landscape">
+                              <div className="col-sx-6 col-md-8 col-lg-6 mt-5 landscape d-flex justify-content-center ">
                                       <img
                                           className="imagenPortada"
                                           src={fotoPortada}
@@ -26,16 +26,14 @@ export class Home extends Component {
                                       
                                   </div>
                                   <div className="col-sx-6 col-md-6 col-lg-6 landscape">
-                                      <h1 className="deslizarContenido margenTop30">Virtual Menú</h1>
+                                      <h1 className="deslizarContenido margenTop30">Menoo!</h1>
                                       <p className="deslizarContenido">
-                                          Digitalizamos el menú de su negocio <br />
-                                          y creamos un Código QR que permite a sus clientes <br />
-                                          leer la carta en sus dispositivos personales.
+                                            Crea y modifica la carta de tu negocio en minutos.<br />
                                       </p>
                                       <div className="containButton deslizarContenido">
                                           <a href="#obtenerPerspectiva"
                                           ><button aria-label="Descubrir" className="botonAzul">
-                                                  Descubrir
+                                                  Ingresar
                                               </button></a
                                           >
                                       </div>

@@ -52,13 +52,48 @@
 }
 
 .imagenPortada {
-    width: 50%;
+    width: 65%;
     /* Agrego una animacion personalizada usando KeyFrame*/
     animation-name: saltar;
     animation-duration: 1s;
     animation-timing-function: linear;
     animation-fill-mode: forwards;
+    /**/
+    position: relative;
+    top: 90px;
+    left: 90px;
 }
+
+.containButton {
+    margin-top: 10px;
+}
+
+    .containButton .botonAzul {
+        min-width: 130px;
+        height: 40px;
+        color: #fff;
+        padding: 5px 10px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        position: relative;
+        display: inline-block;
+        outline: none;
+        border-radius: 5px;
+        border: none;
+        background: #3a86ff;
+        box-shadow: 0 5px #4433ff;
+    }
+
+        .containButton .botonAzul:hover {
+            box-shadow: 0 3px #4433ff;
+            top: 1px;
+        }
+
+        .containButton .botonAzul:active {
+            box-shadow: 0 0 #4433ff;
+            top: 5px;
+        }
 
 
 
@@ -84,3 +119,4 @@
     }
 }
   
+/************* */
