@@ -3,6 +3,7 @@ import { FetchData } from "./components/FetchData";
 import { Home } from "./components/Home";
 import { ListUsers } from "./components/ListUsers";
 import { ListMenuUsers } from "./components/ListMenuUsers";
+import { Register } from "./components/Register"
 
 const AppRoutes = [
   {
@@ -24,6 +25,10 @@ const AppRoutes = [
     {
     path: '/show_menus_users',
     element: <ListMenuUsers />
+    },
+    {
+    path: '/register',
+    element: <Register />
     }
 ];
 

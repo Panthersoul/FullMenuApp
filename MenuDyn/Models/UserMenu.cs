@@ -7,6 +7,8 @@ public partial class UserMenu
 {
     public int UsrId { get; set; }
 
+    public bool UsrActive { get; set; }
+
     public string UsrName { get; set; } = null!;
 
     public string UsrSurname { get; set; } = null!;
@@ -21,7 +23,7 @@ public partial class UserMenu
 
     public string UsrProfilePic { get; set; } = null!;
 
-    public string UsrSuscription { get; set; } = null!;
+    public int UsrSuscription { get; set; }
 
     public string UsrRut { get; set; } = null!;
 
@@ -29,5 +31,9 @@ public partial class UserMenu
 
     public string UsrEnterpriseName { get; set; } = null!;
 
+    public string? UsrToken { get; set; }
+
     public virtual ICollection<Menu> Menus { get; set; } = new List<Menu>();
+
+    public virtual Suscription UsrSuscriptionNavigation { get; set; } = null!;
 }

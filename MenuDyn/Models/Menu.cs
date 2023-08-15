@@ -7,6 +7,8 @@ public partial class Menu
 {
     public int MenuId { get; set; }
 
+    public bool MenuActive { get; set; }
+
     public string MenuLogo { get; set; } = null!;
 
     public string MenuBarName { get; set; } = null!;
@@ -18,8 +20,6 @@ public partial class Menu
     public string MenuEmail { get; set; } = null!;
 
     public string MenuSocial { get; set; } = null!;
-
-    public bool? MenuActive { get; set; }
 
     public string? MenuObs { get; set; }
 

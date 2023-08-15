@@ -9,6 +9,8 @@ public partial class Submenu
 
     public string SubmenuName { get; set; } = null!;
 
+    public bool SubmenuActive { get; set; }
+
     public int FkMenuId { get; set; }
 
     public virtual Menu FkMenu { get; set; } = null!;

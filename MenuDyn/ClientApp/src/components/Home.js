@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 
+import { useParams, Link } from 'react-router-dom';              
+
+
 const currentURL = window.location.href
 var fotoPortada = currentURL + "/assets/img/imageHeader.svg";
 
@@ -31,20 +34,28 @@ export class Home extends Component {
                                             Crea y modifica la carta de tu negocio en minutos.<br />
                                       </p>
                                       <div className="containButton deslizarContenido">
-                                          <a href="#obtenerPerspectiva"
-                                          ><button aria-label="Descubrir" className="botonAzul">
+                                      
+                                          <button aria-label="Ingresar" className="botonAzul">
+                                              <Link to={'/register'} style={{ textDecoration: 'none', color: 'white' }}>
                                                   Ingresar
-                                              </button></a
-                                          >
+                                              </Link>
+                                          </button>
+
+                                  </div>
+                                      <div className="containButton deslizarContenido mt-3">
+                                      
+                                              <button aria-label="registrarse" className="botonVerdeAgua">
+                                              <Link to={'/register'} style={{ textDecoration: 'none', color: 'white' }}>
+                                                  Registrarse
+                                              </Link>
+                                              </button>
+                                      
                                       </div>
                                   </div>
                               </div>
-                          
                       </div>
                   </div>
-
-
-            </div>
+              </div>
           </div>
     );
   }
