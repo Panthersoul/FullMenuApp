@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace MenuDyn.Models;
 
-public partial class Suscription
+public partial class SuscriptionsType
 {
     public int SuscriptionId { get; set; }
 
@@ -17,11 +17,5 @@ public partial class Suscription
 
     public bool SuscriptionActive { get; set; }
 
-    public DateTime SuscriptionStartDate { get; set; }
-
-    public DateTime? SuscriptionEndDate { get; set; }
-
-    public virtual SuscriptionsType SuscriptionTypeNavigation { get; set; } = null!;
-
-    public virtual ICollection<UserMenu> UserMenus { get; set; } = new List<UserMenu>();
+    public virtual ICollection<Suscription> Suscriptions { get; set; } = new List<Suscription>();
 }

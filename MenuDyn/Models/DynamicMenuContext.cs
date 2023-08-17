@@ -25,6 +25,8 @@ public partial class DynamicMenuContext : DbContext
 
     public virtual DbSet<Suscription> Suscriptions { get; set; }
 
+    public virtual DbSet<SuscriptionsType> SuscriptionsType { get; set; }
+
     public virtual DbSet<UserMenu> UserMenus { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -35,7 +37,7 @@ public partial class DynamicMenuContext : DbContext
     {
         modelBuilder.Entity<Category>(entity =>
         {
-            entity.HasKey(e => e.CategoryId).HasName("PK__category__D54EE9B4966CE191");
+            entity.HasKey(e => e.CategoryId).HasName("PK__category__D54EE9B4C114FBA8");
 
             entity.ToTable("category");
 
@@ -49,7 +51,7 @@ public partial class DynamicMenuContext : DbContext
 
         modelBuilder.Entity<Menu>(entity =>
         {
-            entity.HasKey(e => e.MenuId).HasName("PK__menu__4CA0FADCA7DA2F82");
+            entity.HasKey(e => e.MenuId).HasName("PK__menu__4CA0FADC38F12E2A");
 
             entity.ToTable("menu");
 
@@ -88,12 +90,12 @@ public partial class DynamicMenuContext : DbContext
             entity.HasOne(d => d.FkMenuUserNavigation).WithMany(p => p.Menus)
                 .HasForeignKey(d => d.FkMenuUser)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__menu__FK_menu_us__03F0984C");
+                .HasConstraintName("FK__menu__FK_menu_us__1DB06A4F");
         });
 
         modelBuilder.Entity<Product>(entity =>
         {
-            entity.HasKey(e => e.ProductId).HasName("PK__product__47027DF5075F5952");
+            entity.HasKey(e => e.ProductId).HasName("PK__product__47027DF5383EBD05");
 
             entity.ToTable("product");
 
@@ -133,7 +135,7 @@ public partial class DynamicMenuContext : DbContext
                         .HasConstraintName("FK_product_cat"),
                     j =>
                     {
-                        j.HasKey("ProductId", "CategoryId").HasName("PK__rel_Prod__1A56936E83D36C10");
+                        j.HasKey("ProductId", "CategoryId").HasName("PK__rel_Prod__1A56936E2F01E5FB");
                         j.ToTable("rel_Product_Category");
                         j.IndexerProperty<int>("ProductId").HasColumnName("product_id");
                         j.IndexerProperty<int>("CategoryId").HasColumnName("category_id");
@@ -142,7 +144,7 @@ public partial class DynamicMenuContext : DbContext
 
         modelBuilder.Entity<Submenu>(entity =>
         {
-            entity.HasKey(e => e.SubmenuId).HasName("PK__submenu__C8A8BB92882C482C");
+            entity.HasKey(e => e.SubmenuId).HasName("PK__submenu__C8A8BB925CE652F8");
 
             entity.ToTable("submenu");
 
@@ -157,7 +159,7 @@ public partial class DynamicMenuContext : DbContext
             entity.HasOne(d => d.FkMenu).WithMany(p => p.Submenus)
                 .HasForeignKey(d => d.FkMenuId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__submenu__FK_menu__06CD04F7");
+                .HasConstraintName("FK__submenu__FK_menu__208CD6FA");
 
             entity.HasMany(d => d.Categories).WithMany(p => p.Submenus)
                 .UsingEntity<Dictionary<string, object>>(
@@ -172,7 +174,7 @@ public partial class DynamicMenuContext : DbContext
                         .HasConstraintName("FK_submenu_cat"),
                     j =>
                     {
-                        j.HasKey("SubmenuId", "CategoryId").HasName("PK__rel_Subm__95FC550942175289");
+                        j.HasKey("SubmenuId", "CategoryId").HasName("PK__rel_Subm__95FC55095CE26E61");
                         j.ToTable("rel_Submenu_Category");
                         j.IndexerProperty<int>("SubmenuId").HasColumnName("submenu_id");
                         j.IndexerProperty<int>("CategoryId").HasColumnName("category_id");
@@ -181,9 +183,43 @@ public partial class DynamicMenuContext : DbContext
 
         modelBuilder.Entity<Suscription>(entity =>
         {
-            entity.HasKey(e => e.SuscriptionId).HasName("PK__suscript__683652390A44C456");
+            entity.HasKey(e => e.SuscriptionId).HasName("PK__suscript__68365239593DE963");
 
             entity.ToTable("suscription");
+
+            entity.Property(e => e.SuscriptionId).HasColumnName("suscription_id");
+            entity.Property(e => e.SuscriptionActive).HasColumnName("suscription_active");
+            entity.Property(e => e.SuscriptionDescription)
+                .HasMaxLength(100)
+                .IsUnicode(false)
+                .HasColumnName("suscription_description");
+            entity.Property(e => e.SuscriptionEndDate)
+                .HasColumnType("datetime")
+                .HasColumnName("suscription_end_date");
+            entity.Property(e => e.SuscriptionName)
+                .HasMaxLength(50)
+                .IsUnicode(false)
+                .HasColumnName("suscription_name");
+            entity.Property(e => e.SuscriptionPrice)
+                .HasMaxLength(50)
+                .IsUnicode(false)
+                .HasColumnName("suscription_price");
+            entity.Property(e => e.SuscriptionStartDate)
+                .HasColumnType("datetime")
+                .HasColumnName("suscription_start_date");
+            entity.Property(e => e.SuscriptionType).HasColumnName("suscription_type");
+
+            entity.HasOne(d => d.SuscriptionTypeNavigation).WithMany(p => p.Suscriptions)
+                .HasForeignKey(d => d.SuscriptionType)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK__suscripti__suscr__17F790F9");
+        });
+
+        modelBuilder.Entity<SuscriptionsType>(entity =>
+        {
+            entity.HasKey(e => e.SuscriptionId).HasName("PK__suscript__68365239587C260A");
+
+            entity.ToTable("suscriptions_types");
 
             entity.Property(e => e.SuscriptionId).HasColumnName("suscription_id");
             entity.Property(e => e.SuscriptionActive).HasColumnName("suscription_active");
@@ -195,10 +231,6 @@ public partial class DynamicMenuContext : DbContext
                 .HasMaxLength(50)
                 .IsUnicode(false)
                 .HasColumnName("suscription_name");
-            entity.Property(e => e.SuscriptionPicture)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("suscription_picture");
             entity.Property(e => e.SuscriptionPrice)
                 .HasMaxLength(50)
                 .IsUnicode(false)
@@ -208,7 +240,7 @@ public partial class DynamicMenuContext : DbContext
 
         modelBuilder.Entity<UserMenu>(entity =>
         {
-            entity.HasKey(e => e.UsrId).HasName("PK__userMenu__60621ABC0A39BB6B");
+            entity.HasKey(e => e.UsrId).HasName("PK__userMenu__60621ABC923AD11B");
 
             entity.ToTable("userMenu");
 
@@ -262,7 +294,7 @@ public partial class DynamicMenuContext : DbContext
             entity.HasOne(d => d.UsrSuscriptionNavigation).WithMany(p => p.UserMenus)
                 .HasForeignKey(d => d.UsrSuscription)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_suscrip");
+                .HasConstraintName("FK_usr_suscrip");
         });
 
         OnModelCreatingPartial(modelBuilder);
